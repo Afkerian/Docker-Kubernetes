@@ -1,0 +1,14 @@
+version: '3.8' # Versión recomendada para Docker Compose / Opcional
+
+services:
+  frontend: # Nombre del servicio/frontend
+    image: nombre_de_la_imagen_frontend:tag # Ruta a la imagen de frontend y su etiqueta
+    ports:
+      - '8080:80' # Mapeo de puerto del host al contenedor
+    restart: always # Política de reinicio del contenedor
+
+  backend: # Nombre del servicio/backend
+    image: nombre_de_la_imagen_backend:tag # Ruta a la imagen de backend y su etiqueta
+    ports:
+      - '5000:7000' # Mapeo de puerto del host al contenedor
+    restart: always # Política de reinicio del contenedor

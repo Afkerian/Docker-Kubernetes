@@ -1,0 +1,14 @@
+# Dependencias
+
+version: '3.8'
+
+services:
+  app: # Servicio app
+    image: myapp # Utiliza la imagen llamada myapp
+    depends_on:
+      - db # Este servicio depende del servicio db
+
+  db: # Servicio db
+    image: postgres # Utiliza la imagen de PostgreSQL
+    networks:
+      - backend # Conecta el servicio a la red backend

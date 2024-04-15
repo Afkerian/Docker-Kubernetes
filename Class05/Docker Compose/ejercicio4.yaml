@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  backend: # Servicio backend
+    image: nombre_de_la_imagen # Ruta a la imagen del backend
+    environment: # Variables de entorno para el servicio backend
+      - CORS=0.0.0.0 # Configuración CORS para permitir todas las solicitudes
+      - DEBUG=1 # Habilitar modo de depuración
+
+  db: # Servicio de base de datos
+    image: "postgres:${Postgres_Version}" # Utiliza la imagen de PostgreSQL con la versión especificada

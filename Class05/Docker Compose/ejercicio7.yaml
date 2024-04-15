@@ -1,0 +1,24 @@
+# Volumes
+
+version: '3.8'
+
+services:
+  app: # Servicio app
+    image: myapp # Utiliza la imagen llamada myapp
+    depends_on:
+      - db # Este servicio depende del servicio db
+
+  db: # Servicio db
+    image: postgres # Utiliza la imagen de PostgreSQL
+    volumes:
+      - db-users:/etc/data:ro # Volumen de solo lectura para db-users
+      - ./db:/etc/data # Mapeo de un directorio local al directorio /etc/data del contenedor
+    networks:
+      - backend # Conecta el servicio a la red backend
+
+networks:
+  backend: # Definición de la red backend
+
+volumes:
+  db-users: # Definición del volumen db-users
+

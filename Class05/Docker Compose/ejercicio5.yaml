@@ -1,0 +1,28 @@
+# Networking
+
+version: '3.8'
+
+services:
+  webapp: # Servicio webapp
+    image: nginx:alpine # Utiliza la imagen de Nginx con Alpine
+    ports:
+      - '8080:80' # Mapea el puerto 8080 del host al puerto 80 del contenedor
+    networks:
+      - frontendnetwork: # Conecta el servicio a la red frontendnetwork
+
+  db: # Servicio db
+    image: redis:alpine # Utiliza la imagen de Redis con Alpine
+    ports:
+      - '4790' # Expone el puerto 4790 del contenedor
+    networks:
+      - backendnetwork: # Conecta el servicio a la red backendnetwork
+
+  backend: # Servicio backend
+    image: nameimage # Utiliza la imagen especificada para el backend
+    networks:
+      - frontendnetwork # Conecta el servicio a la red frontendnetwork
+      - backendnetwork # Conecta el servicio a la red backendnetwork
+
+networks:
+  frontendnetwork: # Definición de la red frontendnetwork
+  backendnetwork: # Definición de la red backendnetwork

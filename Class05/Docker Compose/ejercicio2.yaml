@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  aplicacionweb:
+    build: . # Ruta al Dockerfile para construir la aplicación web
+    command: python main.py # Comando para ejecutar la aplicación web
+    ports:
+      - '5000:80' # Mapeo de puerto del host al contenedor (puerto del contenedor: puerto del host)
+
+  mongodb:
+    image: "mongo:latest" # Utiliza la imagen oficial de MongoDB con la etiqueta "latest" (última versión)
+
+# # Diferentes Proyectos
+
+# - `docker-compose up -d`: Inicia el proyecto la primera vez.
+# - `docker-compose -p [nombre instancia] up -d`: Inicia un proyecto con un nombre de instancia específico.
