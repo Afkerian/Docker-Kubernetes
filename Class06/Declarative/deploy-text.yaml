@@ -1,23 +1,10 @@
-# Limitación/Reservaciones de Recursos
-
-apiversion:
-kind: deploy
+apiVersion: v1
+kind: Pod
 metadata:
-  name: 
-
-
-
-
-version: '3.8'
-
-services:
-  redis: # Nombre del servicio Redis
-    image: redis:alpine # Utiliza la imagen Redis con la etiqueta alpine
-    deploy: # Configuración específica de despliegue para Docker Swarm
-      resources: # Configuración de recursos del servicio
-        limits: # Limitaciones máximas de recursos
-          cpus: '0.3' # Limita el uso de CPU al 30% de un núcleo
-          memory: 250M # Limita el uso de memoria a 250 megabytes
-        reservations: # Reservas mínimas de recursos
-          cpus: '0.15' # Reserva al menos el 15% de un núcleo de CPU
-          memory: 100M # Reserva al menos 100 megabytes de memoria
+  name: nginx-pod
+spec:
+  containers:
+  - name: nginx-container
+    image: nginx:latest
+    ports:
+    - containerPort: 80
